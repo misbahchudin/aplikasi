@@ -1,7 +1,7 @@
 <?php
  $dbhost = "127.0.0.1";
  $dbuser = "root";
- $dbpass = "";
+ $dbpass = "123456";
  $dbname = "test8";
 
  $theLink = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)
@@ -38,7 +38,7 @@
       <a class="dropdown-item" href="<?= $thePORT . 'data_kota/tampil.php'; ?>">Data Kota</a>
       <a class="dropdown-item" href="<?= $thePORT . 'data_prodi/tampil.php'; ?>">Data Prodi</a>
       <a class="dropdown-item" href="<?= $thePORT . 'data_dosen/tampil.php'; ?>">Data Dosen</a>
-      <a class="dropdown-item" href="#">Data Mahasiswa</a>
+      <a class="dropdown-item" href="<?= $thePORT . 'data_mahasiswa/tampil.php'; ?>">Data Mahasiswa</a>
      </div>
     </li>
   
