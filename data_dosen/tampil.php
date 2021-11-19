@@ -18,7 +18,7 @@
    <tbody>
    <?php
    $nomor   = 1;
-   $queri   = "SELECT * FROM dosen ORDER BY nik";
+   $queri   = "SELECT dosen.nik,dosen.nm_dos,dosen.sex,dosen.alamat,kota.nm_kota as kota FROM dosen INNER JOIN 	kota 	ON dosen.kota = kota.kd_kota ORDER BY nik";
    $sambung = mysqli_query($theLink, $queri);
    while ($row = mysqli_fetch_array($sambung))
    {

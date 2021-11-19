@@ -13,8 +13,14 @@
     $nm_dos = $_POST["nm_dos"];
     $sex = $_POST["sex"];
     $alamat = $_POST["alamat"];
-    $kota = $_POST["kota"];
-     
+    // $kota = $_POST["kota"];
+
+    $radio = $_POST["kd_kota"];
+    for($i=0;$i<count($radio)-1;$i++){
+      $radio[$i];
+    };
+    $kota = $radio[$i];
+
     $query = "INSERT INTO dosen(nik,
       nm_dos,
       sex,
@@ -31,7 +37,7 @@
 echo $query;
     if (mysqli_errno($theLink) > 0 && mysqli_errno($theLink) == 1062 )
     {
-      echo '<script type="text/javascript">alert("terjadi duplikasi pada KODE KOTA, dengan Kode  ' . $kd_kota . ' ganti KODE KOTA dengan yang lain");</script>';
+      echo '<script type="text/javascript">alert("terjadi duplikasi pada KODE KOTA, dengan Kode  ' . $nim . ' ganti KODE KOTA dengan yang lain");</script>';
     }elseif (mysqli_errno($theLink) > 0 && mysqli_errno($theLink) <> 1062 )
     {
       echo '<script type="text/javascript">alert("terjadi kesalahan, proses tambah data tidak berhasil");</script>';
@@ -73,9 +79,19 @@ echo $query;
       </div>
 
       <div class="form-group">
-        <label for="kota">kota</label>
-        <input type="text" class="form-control" name="kota" id="kota". 
-        required value="<?= $kota; ?>">
+      <!-- <p>Mohon Pilih Data Kota:</p> -->
+        <label for="">Mohon Pilih Data Kota:</label><br>
+        <?php 
+        $nomor   = 0;
+        $queri = "SELECT kd_kota, nm_kota from kota";
+        $sambung = mysqli_query($theLink, $queri);
+        while ($row = mysqli_fetch_array($sambung))
+        {
+          echo '<input type="radio" id="" name="kd_kota['.$nomor.']" value="'.$row["kd_kota"].'">';
+          echo '  '.$row["nm_kota"].'   ';
+        }
+        ?>
+
       </div>
 
       <button type="submit" class="btn btn-primary" name="cmdSIMPAN">Simpan</button>
