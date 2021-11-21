@@ -68,9 +68,11 @@ echo $query;
 
       <div class="form-group">
         <label for="sex">sex</label>
-        <input type="text" class="form-control" name="sex" id="sex". 
-        required value="<?= $sex; ?>">
-      </div>
+        <div class="radio">
+          <label><input type="radio" name="sex" checked required value="L"> Laki-Laki</label>
+          <label><input type="radio" name="sex" checked required value="P"> Perempuan</label>
+        </div>
+      </div> 
 
       <div class="form-group">
         <label for="alamat">alamat</label>
@@ -87,7 +89,7 @@ echo $query;
         $sambung = mysqli_query($theLink, $queri);
         while ($row = mysqli_fetch_array($sambung))
         {
-          echo '<input type="radio" id="" name="kd_kota['.$nomor.']" value="'.$row["kd_kota"].'">';
+          echo '<input type="radio" id="" name="kd_kota['.$nomor.']" value="'.$row["kd_kota"].'" checked="checked">';
           echo '  '.$row["nm_kota"].'   ';
         }
         ?>

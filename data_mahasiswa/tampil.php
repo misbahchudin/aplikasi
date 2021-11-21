@@ -21,7 +21,22 @@
    <tbody>
    <?php
    $nomor   = 1;
-   $queri   = "SELECT * FROM mahasiswa ORDER BY nim";
+  $queri   = "SELECT
+                mahasiswa.nim,
+                mahasiswa.nm_mhs,
+                prodi.nm_prodi as prodi,
+                mahasiswa.sex,
+                mahasiswa.tgl_lhr,
+                dosen.nm_dos as dosen_wali,
+                mahasiswa.alamat,
+                kota.nm_kota as kota
+              FROM
+                mahasiswa
+                LEFT JOIN prodi ON mahasiswa.prodi = prodi.kd_prodi
+                LEFT JOIN dosen ON mahasiswa.dosen_wali = dosen.nik
+                LEFT JOIN kota ON mahasiswa.kota = kota.kd_kota 
+                ORDER BY nim";
+
    $sambung = mysqli_query($theLink, $queri);
    while ($row = mysqli_fetch_array($sambung))
    {

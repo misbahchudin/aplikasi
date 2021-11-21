@@ -13,7 +13,7 @@
     $alamat = $row["alamat"];
     $kota = $row["kota"];
   }
-  
+
   if(isset($_POST["cmdSIMPAN"]))
   {
     $tempKODE = $_POST["tempKODE"];
@@ -22,7 +22,7 @@
     $sex = $_POST["sex"];
     $alamat = $_POST["alamat"];
     $kota = $_POST["kota"];
-        
+  
     $query = "UPDATE  dosen SET 
                   nik = '$nik',
                   nm_dos = '$nm_dos',
@@ -68,21 +68,43 @@
 
       <div class="form-group">
         <label for="sex">sex</label>
-        <input type="text" class="form-control" name="sex" id="sex". 
-        required value="<?= $sex; ?>">
-      </div>                      
+        <div class="radio">
+          <?php
+          if ($sex == "L")
+          {
+              echo('<label><input type="radio" name="sex" checked required value="L"> Laki-Laki</label>'); 
+              echo(' <label><input type="radio" name="sex" required value="P"> Perempuan</label>');
+          }else
+          {
+            echo('<label><input type="radio" name="sex" required value="L"> Laki-Laki</label>'); 
+            echo(' <label><input type="radio" name="sex" checked required value="P"> Perempuan</label>');
+          }
+          ?>          
+        </div>
+      </div>                  
 
       <div class="form-group">
         <label for="alamat">alamat</label>
         <input type="text" class="form-control" name="alamat" id="alamat". 
         required value="<?= $alamat; ?>">
-      </div>                      
-
+      </div>      
+      
       <div class="form-group">
-        <label for="kota">kota</label>
-        <input type="text" class="form-control" name="kota" id="kota". 
-        required value="<?= $kota; ?>">
-      </div>                      
+        <label for="Prodi">Kota</label>
+        <select class="form-control" id="prodi" name="kota">
+          <?php
+            $query = "SELECT kd_kota, nm_kota FROM kota";
+            $sambung = mysqli_query($theLink,$query);
+            while($data = mysqli_fetch_array($sambung))
+            {
+              if ($kota == $data["kd_kota"])
+              {
+                echo('<option selected="selected" value="'.$data["kd_kota"].'">'.$data["nm_kota"].'</option>');  
+              } else echo('<option value="'.$data["kd_kota"].'">'.$data["nm_kota"].'</option>');
+            }
+          ?>
+        </select>
+      </div> 
 
       <button type="submit" class="btn btn-primary" name="cmdSIMPAN">Simpan</button>
       <button type="button" class="btn btn-danger" onclick="window.location='tampil.php'">Batal</button>

@@ -79,16 +79,26 @@
       </div>                 
 
       <div class="form-group">
-        <label for="prodi">prodi</label>
-        <input type="text" class="form-control" name="prodi" id="prodi". 
-        required value="<?= $prodi; ?>">
-      </div>                 
-
+        <label for="Prodi">Prodi</label>
+        <select class="form-control" id="prodi" name="prodi">
+          <?php
+            $query = "SELECT prodi.kd_prodi, prodi.nm_prodi FROM prodi";
+            $sambung = mysqli_query($theLink,$query);
+            while($data = mysqli_fetch_array($sambung))
+            {
+              echo('<option value="'.$data["kd_prodi"].'">'.$data["nm_prodi"].'</option>');
+            }
+          ?>
+        </select>
+      </div>
+      
       <div class="form-group">
         <label for="sex">sex</label>
-        <input type="text" class="form-control" name="sex" id="sex". 
-        required value="<?= $sex; ?>">
-      </div>                 
+        <div class="radio">
+          <label><input type="radio" name="sex" checked required value="L"> Laki-Laki</label>
+          <label><input type="radio" name="sex" checked required value="P"> Perempuan</label>
+        </div>
+      </div>  
 
       <div class="form-group">
         <label for="tgl_lhr">tgl_lhr</label>
@@ -96,22 +106,38 @@
       </div>                 
 
       <div class="form-group">
-        <label for="dosen_wali">dosen_wali</label>
-        <input type="text" class="form-control" name="dosen_wali" id="dosen_wali". 
-        required value="<?= $dosen_wali; ?>">
-      </div>                 
+        <label for="Prodi">Dosen</label>
+        <select class="form-control" id="prodi" name="dosen_wali">
+          <?php
+            $query = "SELECT nik, nm_dos FROM dosen";
+            $sambung = mysqli_query($theLink,$query);
+            while($data = mysqli_fetch_array($sambung))
+            {
+              echo('<option value="'.$data["nik"].'">'.$data["nm_dos"].'</option>');
+            }
+          ?>
+        </select>
+      </div>             
 
       <div class="form-group">
         <label for="alamat">alamat</label>
         <input type="text" class="form-control" name="alamat" id="alamat". 
         required value="<?= $alamat; ?>">
-      </div>                 
+      </div>   
 
       <div class="form-group">
-        <label for="kota">kota</label>
-        <input type="text" class="form-control" name="kota" id="kota". 
-        required value="<?= $kota; ?>">
-      </div>                 
+        <label for="Prodi">Kota</label>
+        <select class="form-control" id="prodi" name="kota">
+          <?php
+            $query = "SELECT kd_kota, nm_kota FROM kota";
+            $sambung = mysqli_query($theLink,$query);
+            while($data = mysqli_fetch_array($sambung))
+            {
+              echo('<option value="'.$data["kd_kota"].'">'.$data["nm_kota"].'</option>');
+            }
+          ?>
+        </select>
+      </div>                
 
       <button type="submit" class="btn btn-primary" name="cmdSIMPAN">Simpan</button>
       <button type="button" class="btn btn-danger" onclick="window.location='tampil.php'">Batal</button>
