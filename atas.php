@@ -39,6 +39,8 @@
       <a class="dropdown-item" href="<?= $thePORT . 'data_prodi/tampil.php'; ?>">Data Prodi</a>
       <a class="dropdown-item" href="<?= $thePORT . 'data_dosen/tampil.php'; ?>">Data Dosen</a>
       <a class="dropdown-item" href="<?= $thePORT . 'data_mahasiswa/tampil.php'; ?>">Data Mahasiswa</a>
+      <a class="dropdown-item" href="<?= $thePORT . 'data_pasien/tampil.php'; ?>">Data Pasien</a>
+      
      </div>
     </li>
   

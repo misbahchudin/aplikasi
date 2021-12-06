@@ -1,6 +1,6 @@
 <?php require("../atas.php"); ?>
 
-<h3>Daftar Mahasiswa</h3>
+<h3>Daftar Pasien</h3>
   <a href="tambah.php" class="btn btn-primary btn-sm mb-3">Add Data</a>
   <table class="table table-striped table-secondary table-sm">
    <thead>
@@ -50,7 +50,8 @@
      <td><?= $row["tgl_lhr"]; ?></td>
      <td><?= $row["dosen_wali"]; ?></td>
      <td><?= $row["alamat"]; ?></td>
-     <td><?= $row["kota"]; ?></td>
+     <td><?= $row["kota"]; ?></td> 
+
      <td class="text-center">
       <form action="ubah.php" method="post">
       <input type="hidden" name="tempKODE" id="tempKODE" value="<?= $row["nim"]; ?>">
